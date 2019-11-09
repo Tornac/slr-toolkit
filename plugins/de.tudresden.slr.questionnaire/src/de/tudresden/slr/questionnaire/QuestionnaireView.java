@@ -68,7 +68,19 @@ public class QuestionnaireView extends ViewPart {
 		projectSelector.addObserver(questionnaireSelector::setProject);
 		questionnaireSelector.addObserver(this::setQuestionnaire);
 
+		// TODO remove kotlinButton
+		Button kotlinButton = new Button(parent, SWT.NONE);
+		kotlinButton.setText("Try Kotlin");
+		kotlinButton.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseDown(MouseEvent e) {
+				System.out.println("Trying to invoke Kotlin code ...");
+				new KtTest().doStuff();
+			}
+		});
+		
 		projectSelector.updateOptionsDisplay();
+		
 	}
 
 	@Override
